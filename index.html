@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Minh Truong · Portfolio</title>
+<meta name="description" content="Minh Truong (Trương Như Duy Minh): student, writer, photographer and founder of Nắng Ấm Project. Experience, awards, certificates and reading reflections.">
+<meta name="theme-color" content="#0E2A5C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E2A5C'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-size='34' text-anchor='middle' fill='%23F7F9FD'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:ital,wght@0,400..700;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="preload" as="image" href="assets/img/minh_3_bw.webp">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <a class="nav__name" href="#top" aria-label="Minh Truong, back to top">Minh Truong</a>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#experience">Experience</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#degrees">Degrees</a>
+    <a href="#literacy">Literacy Lens</a>
+    <a href="#contact" class="nav__cta">Contact</a>
+  </nav>
+  <button class="nav__menu" aria-expanded="false" aria-controls="sheet" aria-label="Open menu">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+  </button>
+  <div class="nav__progress" aria-hidden="true"><span></span></div>
+</header>
+<div class="sheet" id="sheet" hidden>
+  <nav aria-label="Sections">
+    <a href="#experience">Experience</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#degrees">Degrees</a>
+    <a href="#literacy">Literacy Lens</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero__text">
+      <p class="hero__hi script">Hi! I’m Minh</p>
+      <h1 id="hero-title" class="hero__title">
+        <span class="hero__big">A student</span>
+        <span class="script hero__script">&amp; a passionate</span>
+        <span class="hero__big">individual</span>
+      </h1>
+      <p class="hero__lede">for creativity, communication, and positive social impact. Through academic and community-based projects, I strive to grow, refine my skills, and produce work that reflects both purpose and professionalism. This portfolio showcases my journey, values, and evolving direction.</p>
+      <div class="socials" data-socials></div>
+    </div>
+    <div class="hero__stage" id="hero-stage">
+      <div class="hero__print" id="hero-print" aria-hidden="true">
+        <img class="hero__fig hero__fig--bw" src="assets/img/minh_3_bw.webp" alt="" width="686" height="1119">
+        <img class="hero__fig hero__fig--c" src="assets/img/minh_3_c.webp" alt="" width="686" height="1119">
+      </div>
+      <img class="sr-only" src="assets/img/minh_3_c.webp" alt="Minh in a navy suit speaking into a microphone at a podium">
+      <canvas class="hero__camera" id="hero-camera" aria-label="3D vintage camera. Drag to turn it, click or press Enter to take a photo." role="img" tabindex="0"></canvas>
+      <div class="flash" id="flash" aria-hidden="true"></div>
+      <p class="hero__hint" aria-hidden="true"><span class="hint-desk">Drag the camera · click to shoot</span><span class="hint-touch">Drag the camera · tap to shoot</span></p>
+    </div>
+  </section>
+
+  <!-- PRESS -->
+  <section class="press" aria-labelledby="press-title">
+    <div class="press__head">
+      <img src="assets/img/logo_thanhnien.webp" alt="Báo Thanh Niên" width="767" height="210" class="press__logo">
+      <div>
+        <h2 id="press-title" class="press__title">“Du học Mỹ, vẫn nối dài hành trình nhân ái ở quê nhà”</h2>
+        <p class="press__sub">Thanh Niên newspaper on how Minh kept Nắng Ấm growing from the United States.</p>
+        <a class="btn btn--light" href="" data-link="thanhnien" target="_blank" rel="noopener">Read the article <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </div>
+    </div>
+    <div class="strip tone" data-drag-scroll tabindex="0" aria-label="Article screenshots, scroll sideways">
+      <img src="assets/img/tn_article_1.webp" alt="Thanh Niên article, opening paragraphs" loading="lazy" width="736" height="1192">
+      <img src="assets/img/tn_article_2.webp" alt="Thanh Niên article, section on Nắng Ấm growing to 160 members" loading="lazy" width="368" height="596">
+      <img src="assets/img/tn_article_3.webp" alt="Thanh Niên article, photo of the Nắng Ấm team" loading="lazy" width="368" height="673">
+      <img src="assets/img/tn_article_4.webp" alt="Thanh Niên article, section on the 3x3 basketball fundraiser" loading="lazy" width="368" height="596">
+    </div>
+  </section>
+
+  <!-- JOURNEY INDEX -->
+  <section class="journey" aria-labelledby="journey-title">
+    <div class="journey__head">
+      <h2 id="journey-title" class="h2">Moments that define me</h2>
+      <p>Exploring the paths I’ve taken and the passions that guide me.</p>
+    </div>
+    <ol class="chapters">
+      <li><a href="#experience" data-preview="na_bball_2"><span class="chapters__n">Chapter 1</span><span class="chapters__t">Experience</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#achievements" data-preview="aw_silver"><span class="chapters__n">Chapter 2</span><span class="chapters__t">Achievement</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#degrees" data-preview="deg_piano"><span class="chapters__n">Chapter 3</span><span class="chapters__t">Degree</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#literacy" data-preview="book_snow"><span class="chapters__n">Chapter 4</span><span class="chapters__t">Literacy Lens</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    </ol>
+    <img class="chapters__preview" src="assets/img/na_bball_2.webp" alt="" aria-hidden="true" width="513" height="586">
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="exp" id="experience" aria-labelledby="exp-title">
+    <header class="chapter-head">
+      <h2 id="exp-title" class="script chapter-head__script">Experience</h2>
+      <p class="chapter-head__plain">Eight roles across journalism, media and community work.</p>
+    </header>
+    <div class="exp__layout">
+      <div class="exp__tabs" role="tablist" aria-label="Roles" id="exp-tabs"></div>
+      <div class="exp__panels" id="exp-panels"></div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="awards" id="achievements" aria-labelledby="aw-title">
+    <header class="chapter-head chapter-head--dark">
+      <h2 id="aw-title" class="script chapter-head__script">Achievement</h2>
+      <p class="chapter-head__plain">Twelve recognitions. Drag the ring, swipe, or use the arrows.</p>
+    </header>
+    <div class="ring" id="ring">
+      <canvas class="ring__canvas" id="ring-canvas" aria-hidden="true"></canvas>
+      <div class="ring__fallback" id="ring-fallback" data-drag-scroll></div>
+      <div class="ring__ui">
+        <button class="round" data-ring="prev" aria-label="Previous award"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="ring__caption" aria-live="polite" id="ring-caption"></div>
+        <button class="round" data-ring="next" aria-label="Next award"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="ring__dots" id="ring-dots" role="tablist" aria-label="Choose an award"></div>
+    </div>
+  </section>
+
+  <!-- DEGREES -->
+  <section class="degrees" id="degrees" aria-labelledby="deg-title">
+    <header class="chapter-head">
+      <h2 id="deg-title" class="script chapter-head__script">Degree</h2>
+      <p class="chapter-head__plain">Certificates and diplomas. Swipe the top card away to see the next.</p>
+    </header>
+    <div class="deck-wrap">
+      <div class="deck" id="deck" tabindex="0" aria-roledescription="card stack" aria-label="Degrees and certificates. Use left and right arrow keys."></div>
+      <div class="deck__info" id="deck-info" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- LITERACY LENS -->
+  <section class="lit" id="literacy" aria-labelledby="lit-title">
+    <header class="chapter-head chapter-head--dark">
+      <h2 id="lit-title" class="script chapter-head__script">Literacy Lens</h2>
+      <p class="chapter-head__plain">Three books that shaped how I see. Pick one off the shelf.</p>
+    </header>
+    <div class="lit__layout">
+      <div class="shelf">
+        <canvas id="shelf-canvas" class="shelf__canvas" aria-hidden="true"></canvas>
+        <div class="shelf__picks" role="tablist" aria-label="Books" id="book-tabs"></div>
+      </div>
+      <article class="lit__text" id="book-text" aria-live="polite"></article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <canvas id="contact-canvas" class="contact__canvas" aria-hidden="true"></canvas>
+    <div class="contact__inner">
+      <img src="assets/img/minh_pixel.webp" alt="Pixel-art Minh holding a microphone" width="133" height="200" class="contact__pixel">
+      <h2 id="contact-title" class="contact__title">Let’s make something<br>that matters.</h2>
+      <p class="contact__lede">Open to collaborations in journalism, media, and community projects.</p>
+      <div class="socials socials--big" data-socials data-labels></div>
+      <p class="contact__mail"><a href="" data-link="email">truongnhuduyminh@gmail.com</a></p>
+    </div>
+    <footer class="foot">
+      <span>© 2026 Trương Như Duy Minh</span>
+      <a href="#top">Back to top</a>
+    </footer>
+  </section>
+</main>
+
+<dialog class="lightbox" id="lightbox" aria-label="Image viewer">
+  <button class="round lightbox__close" data-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <figure><img src="assets/img/aw_silver.webp" alt="" width="517" height="392"><figcaption></figcaption></figure>
+</dialog>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="cyan" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0"/>
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues="0.04 0.30 0.97"/>
+        <feFuncG type="table" tableValues="0.13 0.45 0.98"/>
+        <feFuncB type="table" tableValues="0.33 0.78 0.99"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+</svg>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
