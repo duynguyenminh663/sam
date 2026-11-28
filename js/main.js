@@ -53,6 +53,7 @@ addEventListener('scroll', onScroll, { passive: true }); onScroll();
 const setSheet = (open) => { sheet.hidden = !open; menuBtn.setAttribute('aria-expanded', open); menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
 menuBtn.addEventListener('click', () => setSheet(sheet.hidden));
 $$('a', sheet).forEach((a) => a.addEventListener('click', () => setSheet(false)));
+document.addEventListener('click', (e) => { if (!sheet.hidden && !sheet.contains(e.target) && !menuBtn.contains(e.target)) setSheet(false); });
 addEventListener('keydown', (e) => { if (e.key === 'Escape' && !sheet.hidden) { setSheet(false); menuBtn.focus(); } });
 const sectionIO = new IntersectionObserver((entries) => {
   entries.forEach((en) => {
@@ -76,6 +77,7 @@ lb.addEventListener('click', (e) => { if (e.target === lb || e.target.closest('[
 function dragScroll(el) {
   let down = false, sx = 0, sl = 0, moved = 0, lastX = 0, lastT = 0, v = 0, raf = 0;
   el.addEventListener('pointerdown', (e) => {
+    moved = 0;
     if (e.pointerType !== 'mouse' || e.button !== 0) return;
     cancelAnimationFrame(raf);
     down = true; moved = 0; sx = lastX = e.clientX; sl = el.scrollLeft; lastT = performance.now(); v = 0;
@@ -203,7 +205,7 @@ $$('.strip img').forEach((im) => im.addEventListener('click', () => im.classList
 /* ---------- awards caption (ring drives it) ---------- */
 const ringCaption = $('#ring-caption');
 const ringDots = $('#ring-dots');
-ringDots.innerHTML = AWARDS.map((a, i) => `<button role="tab" aria-label="${esc(a.rank)}: ${esc(a.title)}" aria-selected="${i === 0}"></button>`).join('');
+ringDots.innerHTML = AWARDS.map((a, i) => `<button aria-label="${esc(a.rank)}: ${esc(a.title)}" aria-pressed="${i === 0}"></button>`).join('');
 export function showAward(i) {
   const a = AWARDS[i];
   ringCaption.innerHTML = `
@@ -214,7 +216,7 @@ export function showAward(i) {
       ${a.photo ? `<button class="chip" data-zoom="${a.photo}" data-caption="${esc(a.work)}">${ICON.zoom}See the photograph</button>` : ''}
       ${a.link ? `<a class="chip" href="${a.link.href}" target="_blank" rel="noopener">${esc(a.link.label)}${ICON.arrow}</a>` : ''}
     </div>`;
-  $$('button', ringDots).forEach((b, j) => b.setAttribute('aria-selected', i === j));
+  $$('button', ringDots).forEach((b, j) => b.setAttribute('aria-pressed', i === j));
 }
 ringCaption.addEventListener('click', (e) => { const z = e.target.closest('[data-zoom]'); if (z) openLightbox(z.dataset.zoom, z.dataset.caption); });
 showAward(0);
@@ -295,7 +297,7 @@ $('#ring-fallback').addEventListener('click', (e) => { const b = e.target.closes
   deck.addEventListener('pointerdown', (e) => {
     const c = e.target.closest('.card'); if (!c || +c.dataset.i !== order[0]) return;
     drag = { c, x0: e.clientX, y0: e.clientY, dx: 0, dy: 0, t: performance.now(), lx: e.clientX, v: 0, axis: null, id: e.pointerId };
-    c.style.transition = 'none';
+    c.style.transition = 'none'; c.style.willChange = 'transform';
   });
   deck.addEventListener('pointermove', (e) => {
     if (!drag || e.pointerId !== drag.id) return;
@@ -310,25 +312,30 @@ $('#ring-fallback').addEventListener('click', (e) => { const b = e.target.closes
   });
   const end = () => {
     if (!drag) return;
-    const { c, dx, v, axis } = drag; drag = null; c.classList.remove('is-dragging');
+    const { c, dx, v, axis } = drag; drag = null; c.classList.remove('is-dragging'); c.style.willChange = '';
     if (axis !== 'x') { if (axis === null && !DEGREES[order[0]].pending) openLightbox(DEGREES[order[0]].img, DEGREES[order[0]].title); return; }
     if (Math.abs(dx) > deck.clientWidth * 0.28 || Math.abs(v) > 0.5) next(1, Math.sign(dx || v));
     else { c.style.transition = 'transform .35s cubic-bezier(.2,.9,.3,1)'; c.style.transform = 'translate3d(0,0,0) rotate(0)'; }
   };
   deck.addEventListener('pointerup', end);
-  deck.addEventListener('pointercancel', end);
+  deck.addEventListener('pointercancel', () => {
+    // the browser took the gesture (page scroll): settle the card, never open anything
+    if (!drag) return;
+    const { c } = drag; drag = null; c.classList.remove('is-dragging');
+    c.style.transition = 'transform .35s cubic-bezier(.2,.9,.3,1)'; c.style.transform = 'translate3d(0,0,0) rotate(0)';
+  });
 })();
 
 /* ---------- literacy text ---------- */
 const bookTabs = $('#book-tabs');
 const bookText = $('#book-text');
-bookTabs.innerHTML = BOOKS.map((b, i) => `<button role="tab" aria-selected="${i === 0}" data-book="${i}">${esc(b.title)}</button>`).join('');
+bookTabs.innerHTML = BOOKS.map((b, i) => `<button aria-pressed="${i === 0}" aria-controls="book-text" data-book="${i}">${esc(b.title)}</button>`).join('');
 export function showBook(i, fromShelf = false) {
   const b = BOOKS[i];
   const pullIdx = b.id === 'snow' ? 3 : b.id === 'pear' ? 2 : 3;
   bookText.innerHTML = `<h3>${esc(b.title)}</h3>` + b.text.map((p, j) => `<p${j === pullIdx ? ' class="pull"' : ''}>${esc(p)}</p>`).join('');
   bookText.classList.remove('is-in'); void bookText.offsetWidth; bookText.classList.add('is-in');
-  $$('button', bookTabs).forEach((t, j) => t.setAttribute('aria-selected', i === j));
+  $$('button', bookTabs).forEach((t, j) => t.setAttribute('aria-pressed', i === j));
   if (!fromShelf) window.dispatchEvent(new CustomEvent('book:select', { detail: i }));
   if (fromShelf && innerWidth <= 860) bookText.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'start' });
 }

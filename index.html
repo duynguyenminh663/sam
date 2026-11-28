@@ -65,7 +65,7 @@
         <img class="hero__fig hero__fig--c" src="assets/img/minh_3_c.webp" alt="" width="686" height="1119">
       </div>
       <img class="sr-only" src="assets/img/minh_3_c.webp" alt="Minh in a navy suit speaking into a microphone at a podium">
-      <canvas class="hero__camera" id="hero-camera" aria-label="3D vintage camera. Drag to turn it, click or press Enter to take a photo." role="img" tabindex="0"></canvas>
+      <canvas class="hero__camera" id="hero-camera" aria-label="3D vintage camera. Drag to turn it. Press to take a photo." role="button" tabindex="0"></canvas>
       <div class="flash" id="flash" aria-hidden="true"></div>
       <p class="hero__hint" aria-hidden="true"><span class="hint-desk">Drag the camera · click to shoot</span><span class="hint-touch">Drag the camera · tap to shoot</span></p>
     </div>
@@ -76,7 +76,7 @@
     <div class="press__head">
       <img src="assets/img/logo_thanhnien.webp" alt="Báo Thanh Niên" width="767" height="210" class="press__logo">
       <div>
-        <h2 id="press-title" class="press__title">“Du học Mỹ, vẫn nối dài hành trình nhân ái ở quê nhà”</h2>
+        <h2 id="press-title" class="press__title" lang="vi">“Du học Mỹ, vẫn nối dài hành trình nhân ái ở quê nhà”</h2>
         <p class="press__sub">Thanh Niên newspaper on how Minh kept Nắng Ấm growing from the United States.</p>
         <a class="btn btn--light" href="" data-link="thanhnien" target="_blank" rel="noopener">Read the article <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
       </div>
@@ -130,7 +130,7 @@
         <div class="ring__caption" aria-live="polite" id="ring-caption"></div>
         <button class="round" data-ring="next" aria-label="Next award"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
       </div>
-      <div class="ring__dots" id="ring-dots" role="tablist" aria-label="Choose an award"></div>
+      <div class="ring__dots" id="ring-dots" role="group" aria-label="Choose an award"></div>
     </div>
   </section>
 
@@ -141,7 +141,7 @@
       <p class="chapter-head__plain">Certificates and diplomas. Swipe the top card away to see the next.</p>
     </header>
     <div class="deck-wrap">
-      <div class="deck" id="deck" tabindex="0" aria-roledescription="card stack" aria-label="Degrees and certificates. Use left and right arrow keys."></div>
+      <div class="deck" id="deck" tabindex="0" role="group" aria-roledescription="card stack" aria-label="Degrees and certificates. Use left and right arrow keys."></div>
       <div class="deck__info" id="deck-info" aria-live="polite"></div>
     </div>
   </section>
@@ -155,7 +155,7 @@
     <div class="lit__layout">
       <div class="shelf">
         <canvas id="shelf-canvas" class="shelf__canvas" aria-hidden="true"></canvas>
-        <div class="shelf__picks" role="tablist" aria-label="Books" id="book-tabs"></div>
+        <div class="shelf__picks" role="group" aria-label="Choose a book" id="book-tabs"></div>
       </div>
       <article class="lit__text" id="book-text" aria-live="polite"></article>
     </div>

@@ -57,6 +57,7 @@ class Stage {
     }
     this.visible = false; this.tickers = []; this.clock = new THREE.Clock();
     new ResizeObserver(() => this.resize()).observe(canvas);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden && this.visible) this.loop(); });
     if (CAPTURE) this.visible = true;
     else new IntersectionObserver(([e]) => { this.visible = e.isIntersecting; if (this.visible) this.loop(); }, { rootMargin: '120px' }).observe(canvas);
     this.resize();
